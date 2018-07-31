@@ -38,9 +38,12 @@ public class BookController {
     }
 
     @PostMapping
-    public ResponseEntity<Book> createBook() {
+    public ResponseEntity<Book> createBook(@RequestBody CreateBookRequest createBookRequest) {
         Book book = new Book();
         book.setId(UUID.randomUUID().toString());
+        book.setAuthor(createBookRequest.getAuthor());
+        book.setName(createBookRequest.getName());
+        book.setPrice(createBookRequest.getPrice());
 
         bookRepository.save(book);
 
