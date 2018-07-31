@@ -11,27 +11,27 @@ import java.util.UUID;
 @RequestMapping("/book")
 public class BookController {
 
-//    Field injection, not recommended
+    //    Field injection, not recommended
 //    @Autowired
-    private BookRepository bookRepository;
+    private BookService bookService;
 
 //     Constructor injection
 //     @Autowired
-//     public BookController(BookRepository bookRepository) {
-//         this.bookRepository = bookRepository;
+//     public BookController(BookRepository bookService) {
+//         this.bookService = bookService;
 //     }
 
     // Property injection
     @Autowired
-    public void setBookRepository(BookRepository bookRepository) {
-        this.bookRepository = bookRepository;
+    public void setBookService(BookService bookService) {
+        this.bookService = bookService;
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Book> getBookById(@PathVariable("id") String id) {
-        Optional<Book> book = bookRepository.findById(id);
-        if (book.isPresent()) {
-            return ResponseEntity.ok(book.get());
+        Book book = bookService.getById(id);
+        if (book != null) {
+            return ResponseEntity.ok(book);
         }
 
         return ResponseEntity.notFound().build();
@@ -39,13 +39,11 @@ public class BookController {
 
     @PostMapping
     public ResponseEntity<Book> createBook(@RequestBody CreateBookRequest createBookRequest) {
-        Book book = new Book();
-        book.setId(UUID.randomUUID().toString());
-        book.setAuthor(createBookRequest.getAuthor());
-        book.setName(createBookRequest.getName());
-        book.setPrice(createBookRequest.getPrice());
-
-        bookRepository.save(book);
+        Book book = bookService.createBook(
+                createBookRequest.getName(),
+                createBookRequest.getAuthor(),
+                createBookRequest.getPrice()
+        );
 
         return ResponseEntity.ok(book);
     }
