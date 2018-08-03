@@ -20,7 +20,7 @@ public class SimpleInterceptor extends HandlerInterceptorAdapter {
 
         String accessToken = request.getHeader("accessToken");
 
-        if (accessToken != null && accessToken.equals("password")) {
+        if ("password".equals(accessToken)) {
             logger.info("You sent a valid request");
             return true;
         } else {

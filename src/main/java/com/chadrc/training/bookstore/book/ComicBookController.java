@@ -7,18 +7,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/book")
-public class BookController {
+@RequestMapping("/comicbook")
+public class ComicBookController {
 
     Logger logger = LoggerFactory.getLogger(BookController.class);
 
     private BookService bookService;
 
-    private BookService comicBookService;
-
     // Property injection
     @Autowired
-    public void setBookService(BookServiceImpl bookService) {
+    public void setBookService(ComicBookServiceImpl bookService) {
         this.bookService = bookService;
     }
 
