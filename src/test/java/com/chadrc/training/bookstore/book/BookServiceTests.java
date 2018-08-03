@@ -45,8 +45,8 @@ public class BookServiceTests {
         Book book = bookService.createBook(
                 "Harry Potter and the Philosopher's Stone",
                 "J.K. Rowling",
-                20.00f
-        );
+                20.00f,
+                true);
 
         assertNotNull(book);
     }

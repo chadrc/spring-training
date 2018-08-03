@@ -27,12 +27,13 @@ public class ComicBookServiceImpl implements BookService {
         return optionalBook.orElse(null);
     }
 
-    public Book createBook(String name, String author, Float price) {
+    public Book createBook(String name, String author, Float price, Boolean inStock) {
         Book book = new Book();
         book.setId(UUID.randomUUID().toString());
         book.setAuthor(author);
         book.setName(name);
         book.setPrice(price);
+        book.setInStock(inStock);
 
         bookRepository.save(book);
 

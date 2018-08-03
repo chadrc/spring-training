@@ -35,8 +35,8 @@ public class ComicBookController {
         Book book = bookService.createBook(
                 createBookRequest.getName(),
                 createBookRequest.getAuthor(),
-                createBookRequest.getPrice()
-        );
+                createBookRequest.getPrice(),
+                createBookRequest.getInStock());
 
         return ResponseEntity.ok(book);
     }

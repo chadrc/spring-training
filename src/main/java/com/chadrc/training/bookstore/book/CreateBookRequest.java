@@ -7,6 +7,8 @@ class CreateBookRequest {
 
     private Float price;
 
+    private Boolean inStock;
+
     public String getName() {
         return name;
     }
@@ -29,5 +31,13 @@ class CreateBookRequest {
 
     public void setPrice(Float price) {
         this.price = price;
+    }
+
+    public Boolean getInStock() {
+        return inStock;
+    }
+
+    public void setInStock(Boolean inStock) {
+        this.inStock = inStock;
     }
 }
