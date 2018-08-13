@@ -2,19 +2,17 @@ package com.chadrc.training.bookstore.book;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 import java.util.UUID;
 
 @Service
-public class BookServiceImpl implements BookService {
+public class ComicBookServiceImpl implements BookService {
+
+    Logger logger = LoggerFactory.getLogger(ComicBookServiceImpl.class);
     private BookRepository bookRepository;
 
-    Logger logger = LoggerFactory.getLogger(BookServiceImpl.class);
-
-    @Autowired
     public void setBookRepository(BookRepository bookRepository) {
         this.bookRepository = bookRepository;
     }
@@ -39,7 +37,7 @@ public class BookServiceImpl implements BookService {
 
         bookRepository.save(book);
 
-        logger.info("Book was created with id " + book.getId());
+        logger.info("Comic Book was created with id " + book.getId());
 
         return book;
     }

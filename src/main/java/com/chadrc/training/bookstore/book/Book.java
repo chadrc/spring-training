@@ -12,6 +12,8 @@ public class Book {
 
     private String author;
 
+    private Boolean inStock;
+
     private Float price;
 
     public String getId() {
@@ -44,5 +46,13 @@ public class Book {
 
     public void setPrice(Float price) {
         this.price = price;
+    }
+
+    public Boolean getInStock() {
+        return inStock;
+    }
+
+    public void setInStock(Boolean inStock) {
+        this.inStock = inStock;
     }
 }
